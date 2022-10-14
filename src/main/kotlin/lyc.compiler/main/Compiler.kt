@@ -24,7 +24,7 @@ fun main(args: Array<String>) {
         FileFactory.create(args[0]).use { reader ->
             val parser: Parser = ParserFactory.create(reader)
             parser.parse()
-            FileOutputWriter.writeOutput(SYMBOL_TABLE_FILENAME, SymbolTableGenerator())
+            FileOutputWriter.writeOutput(SYMBOL_TABLE_FILENAME, SymbolTableGenerator(parser.symbolList))
             FileOutputWriter.writeOutput(INTERMEDIATE_CODE_FILENAME, SymbolTableGenerator())
             FileOutputWriter.writeOutput(ASSEMBLER_FILENAME, SymbolTableGenerator())
         }
